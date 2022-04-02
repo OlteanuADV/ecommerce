@@ -72,7 +72,7 @@ window.fbAsyncInit = function() {
                         var id_token = googleUser.getAuthResponse().id_token;
                         console.log(id_token);
                         $.get("{{ url('/api/login/google') }}/" + id_token, function(data){
-                            console.log(data);
+                            window.location = "{{ url('/') }}";
                         });
                     }
                 });
@@ -91,7 +91,7 @@ window.fbAsyncInit = function() {
                     method: "GET",
                     url: "{{ url('/api/login/facebook') }}/" + id_token,
                 }).done(function( data ) {
-                    console.log(data);
+                    window.location = "{{ url('/') }}"; 
                 });
             }
         }, {scope: 'public_profile,email,user_birthday,user_gender'});

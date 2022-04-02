@@ -7,15 +7,27 @@ $categories = App\Models\Categories::get();
           <div class="row gy-3 align-items-center">
              <div class="col-lg-2 col-sm-4 col-4">
                 <a href="{{ url('/') }}" class="navbar-brand">
-                <img class="logo" height="40" src="https://2get.ro/userfiles/templates/starter/assets/img/logo.png">
+                <img class="logo" height="40" src="https://i.imgur.com/VwIfc56.png">
                 </a>
              </div>
              <div class="order-lg-last col-lg-3 col-sm-8 col-8">
                 <div class="float-end">
-                   
+                   @if(!Auth::check())
                    <a href="{{ url('/login') }}" class="btn btn-light"> 
                      <i class="fa fa-user"></i>  <span class="ms-1 d-none d-sm-inline-block">Login</span> 
                    </a>
+                   @else
+                     <div class="d-inline-flex align-middle dropdown"> 
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                           <i class="fa fa-user"></i>  <span class="ms-1 d-none d-sm-inline-block">{{ Auth::user()->name }}</span> 
+                        </button> 
+                        <nav class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2" style=""> 
+                           <a class="dropdown-item" href="{{ url('/profile') }}">My profile</a> 
+                           <a class="dropdown-item" href="{{ url('/orders') }}">My orders</a> 
+                           <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a> 
+                        </nav> 
+                     </div>
+                   @endif
                    <a data-bs-toggle="offcanvas" href="#offcanvas_cart" class="btn btn-light"> 
                    <i class="fa fa-shopping-cart"></i> <span class="ms-1">Cart (0)</span> 
                    </a>
@@ -50,7 +62,7 @@ $categories = App\Models\Categories::get();
           <div class="collapse navbar-collapse" id="navbar_main">
              <ul class="navbar-nav">
                <li class="nav-item">
-                   <a class="nav-link ps-0" href="javascript:$('#categories').toggleClass('d-none')"> Categorii </a>
+                   <a class="nav-link ps-0" href="javascript:$('#categories').toggleClass('d-none')"> Categories </a>
                </li>
              </ul>
           </div>

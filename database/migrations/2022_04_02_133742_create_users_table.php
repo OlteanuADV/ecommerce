@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('remember_token');
             $table->string('picture');
+            $table->tinyInteger('blind')->default(0);
             $table->timestamps();
         });
     }

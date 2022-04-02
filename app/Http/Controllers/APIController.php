@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth, DB, Cache\Cache;
+use Auth, DB, Cache\Cache, Storage;
 use App\Models\User;
 
 
@@ -69,5 +69,11 @@ class APIController extends Controller
         Auth::login($user, true);
         
         return 1;
+    }
+
+    public function storage($path)
+    {
+        $file = Storage::path($path);
+        return response()->file($file);
     }
 }
