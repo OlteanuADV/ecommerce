@@ -12,11 +12,11 @@ $categories = App\Models\Categories::get();
              </div>
              <div class="order-lg-last col-lg-3 col-sm-8 col-8">
                 <div class="float-end">
-                   <a href="#" class="btn btn-light"> 
-                   <i class="fa fa-user"></i>  <span class="ms-1 d-none d-sm-inline-block">Conecteaza-te</span> 
+                   <a href="{{ url('/login') }}" class="btn btn-light"> 
+                     <i class="fa fa-user"></i>  <span class="ms-1 d-none d-sm-inline-block">Login</span> 
                    </a>
                    <a data-bs-toggle="offcanvas" href="#offcanvas_cart" class="btn btn-light"> 
-                   <i class="fa fa-shopping-cart"></i> <span class="ms-1">Cos (0)</span> 
+                   <i class="fa fa-shopping-cart"></i> <span class="ms-1">Cart (0)</span> 
                    </a>
                 </div>
              </div>
