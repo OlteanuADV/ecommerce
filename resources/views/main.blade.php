@@ -5,12 +5,17 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="Type some info">
       <meta name="author" content="Type name">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>{{ config('app.name') }}</title>
       <meta name="google-signin-client_id" content="572750383529-8ujv1oagblneqh0jdt4tk0qtcpmu450k.apps.googleusercontent.com">
       <link href="{{ url('/assets/') }}/css/bootstrap.css?v=2.0" rel="stylesheet" type="text/css" />
       <link href="{{ url('/assets/') }}/css/ui.css?v=2.0" rel="stylesheet" type="text/css" />
       <link href="{{ url('/assets/') }}/css/responsive.css?v=2.0" rel="stylesheet" type="text/css" />
       <link rel="stylesheet" href="{{ url('/') }}/assets/css/fontawesome-free/css/all.min.css">
+      <script>
+         var _PAGE_URL = "{{ url('/') }}";
+         var _token = "{{ csrf_token() }}"
+      </script>
       <style>
          .bg-2get {
             background-color: #ff7901;
@@ -24,6 +29,7 @@
          }
       </style>
    </head>
+   @if(Auth::check() && Auth::user()->blind === 0)
    <body class="bg-light">
       @include('header')
 
@@ -109,9 +115,15 @@
          </div>
          <!-- container end.// -->
       </footer>
-      <script src="{{ url('/assets/') }}/js/bootstrap.bundle.min.js"></script>
-      <script src="{{ url('/assets/') }}/js/script.js?v=2.0"></script>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       @yield('javascript')
    </body>
+   @else
+   <button class="btn btn-danger btn-block" style="width: 100%; height:100vh;" id="start">
+      <i class="fa fa-search"></i>
+   </button>
+   @endif
+   <script src="{{ url('/assets/') }}/js/bootstrap.bundle.min.js"></script>
+   <script src="{{ url('/assets/') }}/js/script.js?v=2.0"></script>
+   <script src="{{ url('/assets/') }}/js/speechRecognition.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>
