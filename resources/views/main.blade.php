@@ -124,6 +124,6 @@
    @endif
    <script src="{{ url('/assets/') }}/js/bootstrap.bundle.min.js"></script>
    <script src="{{ url('/assets/') }}/js/script.js?v=2.0"></script>
-   <script src="{{ url('/assets/') }}/js/speechRecognition.js"></script>
+   <script src="{{ url('/assets/') }}/js/speechRecognition.js?v={{ strtotime("now")}}"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>
